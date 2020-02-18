@@ -1,18 +1,12 @@
-const fs = require('fs');
 const express = require('express');
-const xml2json = require('xml2json');
+const fs_a2 = require('../lib/fs_a2');
 
 const router = express.Router();
 
-const api = {};
-/* Read the XML file and parse it into a Javascript Object */
-fs.readFile('./data/flightdata_A.xml', (err, data) => {
-  api.flights = xml2json.toJson(data, { object: true });
-});
-
 /* GET: /api/test endpoint */
 router.get('/test', async (req, res) => {
-  res.json(api.flights);
+  console.log(fs_a2.countAllMorningFlights());
+  res.json(fs_a2.flights);
 });
 
 module.exports = router;
