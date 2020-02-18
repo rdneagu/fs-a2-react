@@ -16,6 +16,7 @@
     "xml2json": "^0.12.0"
   },
   "scripts": {
+    "api": "node ./server/index.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
