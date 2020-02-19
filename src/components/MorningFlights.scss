@@ -1,0 +1,36 @@
+@import '../scss/variables';
+
+.morning-flights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px;
+  grid-column-gap: 2%;
+
+  aside {
+    position: relative;
+    display: flex;
+    padding: 10px;
+    background-color: rgba($bg-blue-2, .6);
+    border: 1px solid $col-cyan;
+    border-radius: 4px;
+    align-items: center;
+
+    img {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      opacity: .2;      
+    }
+    &.morning-flights-inbound img {
+      transform: scaleY(-1);
+    }
+    .morning-flights-amount {
+      font-size: 6em;
+      opacity: .2;
+    }
+    .morning-flights-text {
+      flex: 1;
+      text-align: center;
+    }
+  }
+}
