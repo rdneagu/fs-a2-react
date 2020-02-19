@@ -1,7 +1,43 @@
 const fs = require('fs');
 const xml2json = require('xml2json');
-const openflights = require('openflights-cached/iata');
 const _ = require('lodash');
+const openflights = require('../data/airports.json');
+
+/* const lineReader = require('readline').createInterface({
+  input: fs.createReadStream('./server/data/airports.dat'),
+});
+
+let n_line = 0;
+const ob = {};
+let keys = [];
+
+function parseToPrimitive(value) {
+  try {
+    return JSON.parse(value);
+  }
+  catch (e) {
+    return value.toString();
+  }
+}
+
+lineReader.on('line', (line) => {
+  const data = line.split(',').map((val) => val.replace(/^['"]|['"]$/g, ''));
+  if (n_line === 0) {
+    keys = data;
+    n_line += 1;
+  } else {
+    ob[data[4]] = {};
+    data.forEach((val, i) => {
+      ob[data[4]][keys[i]] = parseToPrimitive(val);
+    });
+  }
+});
+
+lineReader.on('close', () => {
+  fs.writeFile('./server/data/airports.json', JSON.stringify(ob), () => {
+    console.log('success');
+  });
+}); */
 
 const fs_a2 = {
   flights: {},
