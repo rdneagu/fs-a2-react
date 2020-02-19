@@ -12,8 +12,6 @@ const fs_a2 = {
     fs.readFile('./server/data/flightdata_A.xml', (err, data) => {
       const jsonResult = xml2json.toJson(data, { object: true });
       this.flights = jsonResult.flights.flight;
-
-      this.countAllMorningFlights();
     });
   },
   /**
@@ -87,25 +85,25 @@ const fs_a2 = {
   getAvgJourneyTime(departure, destination) {
     const avgTimeByJourney = _(this.flights)
       .filter((flight) => flight.depair === departure && flight.destair === destination)
-      .map((flight) => {
+      .reduce((acc, flight) => {
         const outDepartureDateTime = new Date(`${flight.outdepartdate} ${flight.outdeparttime}`);
         const outArrivalDateTime = new Date(`${flight.outarrivaldate} ${flight.outarrivaltime}`);
+        acc.outbound = (acc.outbound || []).concat(Math.round(Math.abs(outArrivalDateTime - outDepartureDateTime) / 1000));
 
-        const difference = [Math.round(Math.abs(outArrivalDateTime - outDepartureDateTime) / 1000)];
         if (flight.oneway === '0') {
           const inDepartureDateTime = new Date(`${flight.indepartdate} ${flight.indeparttime}`);
           const inArrivalDateTime = new Date(`${flight.inarrivaldate} ${flight.inarrivaltime}`);
-
-          difference.push(Math.round(Math.abs(inArrivalDateTime - inDepartureDateTime) / 1000));
+          acc.inbound = (acc.inbound || []).concat(Math.round(Math.abs(inArrivalDateTime - inDepartureDateTime) / 1000));
         }
-        return difference;
-      })
-      .flattenDeep()
-      .mean();
+        return acc;
+      }, {});
     return {
       departure: openflights[departure],
       destination: openflights[destination],
-      averageTime: avgTimeByJourney,
+      averageTime: {
+        outbound: _.mean(avgTimeByJourney.outbound),
+        inbound: _.mean(avgTimeByJourney.inbound),
+      },
     };
   },
 };
