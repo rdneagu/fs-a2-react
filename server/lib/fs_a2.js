@@ -12,24 +12,32 @@ const fs_a2 = {
     fs.readFile('./server/data/flightdata_A.xml', (err, data) => {
       const jsonResult = xml2json.toJson(data, { object: true });
       this.flights = jsonResult.flights.flight;
+
+      this.countAllMorningFlights();
     });
   },
   /**
    * Counts all the morning flights (assuming morning is between 6:00 and 12:00 AM)
    *
-   * @returns {Integer}  A number representing the amount of flights
+   * @returns {Object}  An object containing the number of the morning flights for outbound and inbound flights
    */
   countAllMorningFlights() {
-    const filteredFlights = this.flights.filter((flight) => {
-      const [inDepartureHour] = flight.indeparttime.split(':');
-      const [outDepartureHour] = flight.outdeparttime.split(':');
-
-      const boolInDepartureMorning = (Number.parseInt(inDepartureHour) >= 6 && Number.parseInt(inDepartureHour) < 12);
-      const boolOutDepartureMorning = (Number.parseInt(outDepartureHour) >= 6 && Number.parseInt(outDepartureHour) < 12);
-
-      return boolInDepartureMorning || boolOutDepartureMorning;
-    });
-    return filteredFlights.length;
+    const countedFlights = _(this.flights)
+      .reduce((acc, flight) => {
+        const [outDepartureHour] = flight.outdeparttime.split(':');
+        if (Number.parseInt(outDepartureHour) >= 6 && Number.parseInt(outDepartureHour) < 12) {
+          console.log(flight.outdeparttime);
+          acc.outbound = (acc.outbound || 0) + 1;
+        }
+        if (flight.oneway === '0') {
+          const [inDepartureHour] = flight.indeparttime.split(':');
+          if (Number.parseInt(inDepartureHour) >= 6 && Number.parseInt(inDepartureHour) < 12) {
+            acc.inbound = (acc.inbound || 0) + 1;
+          }
+        }
+        return acc;
+      }, {});
+    return countedFlights;
   },
   /**
    * Gets the percentage of flights getting into a specific country
