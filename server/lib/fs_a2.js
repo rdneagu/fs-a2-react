@@ -105,7 +105,7 @@ const fs_a2 = {
     return {
       departure: openflights[departure],
       destination: openflights[destination],
-      avgTime: avgTimeByJourney,
+      averageTime: avgTimeByJourney,
     };
   },
 };
