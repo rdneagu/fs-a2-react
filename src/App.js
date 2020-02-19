@@ -1,9 +1,13 @@
 import React from 'react';
-import './scss/App.scss';
+import './App.scss';
+
+import Home from './views/Home';
 
 function App() {
   return (
-    <div id="react">Hello World</div>
+    <div id="react">
+      <Home />
+    </div>
   );
 }
 
