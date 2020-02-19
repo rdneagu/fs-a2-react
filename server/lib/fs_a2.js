@@ -116,13 +116,19 @@ const fs_a2 = {
         // Grab the outbound departure and arrival date and time then format it into a Javascript DateTime object
         const outDepartureDateTime = new Date(`${flight.outdepartdate} ${flight.outdeparttime}`);
         const outArrivalDateTime = new Date(`${flight.outarrivaldate} ${flight.outarrivaltime}`);
+        /* Due to the timezone discrepancies the departure date should be converted using the destination timezone
+           Ex: LHR to DXB has a 4 hour difference so the time is showing longer than it is supposed to be */
+        const outDepartureDateTimeTZ = new Date(outDepartureDateTime.toLocaleString('en-US', { timeZone: openflights[destination].tz }));
         // Default the object key to empty list if it does not exist and push the time differences into it
-        acc.outbound = (acc.outbound || []).concat(Math.round(Math.abs(outArrivalDateTime - outDepartureDateTime) / 1000));
+        acc.outbound = (acc.outbound || []).concat(Math.round(Math.abs(outArrivalDateTime - outDepartureDateTimeTZ) / 1000));
         // If the journey has a return flight we do the same again but for inbound flights this time
         if (flight.oneway === '0') {
           const inDepartureDateTime = new Date(`${flight.indepartdate} ${flight.indeparttime}`);
           const inArrivalDateTime = new Date(`${flight.inarrivaldate} ${flight.inarrivaltime}`);
-          acc.inbound = (acc.inbound || []).concat(Math.round(Math.abs(inArrivalDateTime - inDepartureDateTime) / 1000));
+          /* Due to the timezone discrepancies the arrival date should be converted using the destination timezone
+             Ex: LHR to DXB has a 4 hour difference so the time is showing longer than it is supposed to be */
+          const inArrivalDateTimeTZ = new Date(inArrivalDateTime.toLocaleString('en-US', { timeZone: openflights[destination].tz }));
+          acc.inbound = (acc.inbound || []).concat(Math.round(Math.abs(inArrivalDateTimeTZ - inDepartureDateTime) / 1000));
         }
         return acc;
       }, {});
