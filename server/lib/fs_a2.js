@@ -69,6 +69,38 @@ const fs_a2 = {
       .value();
     return popularDestination.slice(0, limit);
   },
+  /**
+   * Gets the average (mean) journey time between two airports
+   * If the flight has a return then we consider that time as well
+   *
+   * @param {String} departure      Departure airport iata code
+   * @param {String} destination    Destination airport iata code
+   * @returns {Object}  An object containing details about the airports and the average time
+   */
+  getAvgJourneyTime(departure, destination) {
+    const avgTimeByJourney = _(this.flights)
+      .filter((flight) => flight.depair === departure && flight.destair === destination)
+      .map((flight) => {
+        const outDepartureDateTime = new Date(`${flight.outdepartdate} ${flight.outdeparttime}`);
+        const outArrivalDateTime = new Date(`${flight.outarrivaldate} ${flight.outarrivaltime}`);
+        
+        const difference = [Math.round(Math.abs(outArrivalDateTime - outDepartureDateTime) / 1000)];
+        if (flight.oneway === '0') {
+          const inDepartureDateTime = new Date(`${flight.indepartdate} ${flight.indeparttime}`);
+          const inArrivalDateTime = new Date(`${flight.inarrivaldate} ${flight.inarrivaltime}`);
+
+          difference.push(Math.round(Math.abs(inArrivalDateTime - inDepartureDateTime) / 1000))
+        }
+        return difference;
+      })
+      .flattenDeep()
+      .mean();
+    return {
+      departure: openflights[departure],
+      destination: openflights[destination],
+      avgTime: avgTimeByJourney,
+    };
+  },
 };
 
 fs_a2.loadFlights();
