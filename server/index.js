@@ -1,11 +1,10 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const api = require('./routes/api');
 
 /* Prepare the body parser */
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 /* Pass the routes to the server to be used */
 app.use('/api', api);
