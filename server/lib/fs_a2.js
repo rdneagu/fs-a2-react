@@ -26,7 +26,6 @@ const fs_a2 = {
       .reduce((acc, flight) => {
         const [outDepartureHour] = flight.outdeparttime.split(':');
         if (Number.parseInt(outDepartureHour) >= 6 && Number.parseInt(outDepartureHour) < 12) {
-          console.log(flight.outdeparttime);
           acc.outbound = (acc.outbound || 0) + 1;
         }
         if (flight.oneway === '0') {
