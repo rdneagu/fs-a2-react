@@ -152,13 +152,13 @@ const fs_a2 = {
         const [outDepartureYear, outDepartureMonth, outDepartureDay] = flight.outdepartdate.split('-');
         /* If the year and the month matches with the departure
            Default the outbound object key to {} if it does not exist then increment the day key by 1 defaulting to 0 if it does not exist */
-        if (Number.parseInt(outDepartureYear) === year && Number.parseInt(outDepartureMonth) === month) {
+        if (outDepartureYear === year && Number.parseInt(outDepartureMonth) === month) {
           acc.outbound = _.set(acc.outbound || {}, outDepartureDay, _.get(acc.outbound, outDepartureDay, 0) + 1);
         }
         // If the journey has a return flight repeat the same procedure again but for inbound flights this time
         if (flight.oneway === '0') {
           const [inDepartureYear, inDepartureMonth, inDepartureDay] = flight.indepartdate.split('-');
-          if (Number.parseInt(inDepartureYear) === year && Number.parseInt(inDepartureMonth) === month) {
+          if (inDepartureYear === year && Number.parseInt(inDepartureMonth) === month) {
             acc.inbound = _.set(acc.inbound || {}, inDepartureDay, _.get(acc.inbound, inDepartureDay, 0) + 1);
           }
         }
