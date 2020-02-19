@@ -55,7 +55,7 @@ const fs_a2 = {
    * Gets the percentage of flights getting into a specific country
    *
    * @param {String} country      The country to lookup for
-   * @returns {Float}  A number representing the percentage of the flights ranging from 0 to 1
+   * @returns {Object}  An object containing the percentage of the flights ranging from 0 to 1
    */
   getPercentageOfFlights(country) {
     // Filter iata codes by country name to know which codes to look for
@@ -65,13 +65,15 @@ const fs_a2 = {
       .value();
     // Filter the flights that contain one of the iata codes filtered previously then divide the length of the filtered list by the length of the unfiltered list
     const filteredFlights = this.flights.filter((flight) => filteredIata.indexOf(flight.destair) !== -1);
-    return filteredFlights.length / this.flights.length;
+    return {
+      percentage: filteredFlights.length / this.flights.length,
+    };
   },
   /**
    * Gets a fixed list of n most popular destinations
    *
    * @param {Integer} limit         The limit of popularity list
-   * @returns {Array}  The list with n most popular destinations
+   * @returns {Object}  An object containing the list with n most popular destinations
    */
   getMostPopularDestination(limit = 10) {
     // Group and count by the destination code then map the result to a new array ordered by the number of flights in descending order
@@ -93,7 +95,9 @@ const fs_a2 = {
       .orderBy('count', 'desc')
       .value();
     // Return a list with the destination ranging from 0 up to the limit specified (exclusive)
-    return popularDestination.slice(0, limit);
+    return {
+      list: popularDestination.slice(0, limit),
+    };
   },
   /**
    * Gets the average (mean) journey time between two airports
