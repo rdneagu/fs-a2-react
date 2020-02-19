@@ -30,6 +30,8 @@ html, body, #react {
 }
 
 .page {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  padding: 20px 2%;
+  padding: 20px 0;
 }

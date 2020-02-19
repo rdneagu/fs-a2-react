@@ -152,25 +152,25 @@ const fs_a2 = {
     // Convert the name of the month to a number representation
     const month = this.getMonthNum(monthName);
     // Reduce the flights list to a Javascript Object containing the required daily count by using a special iterator
-    const countByDay = _(this.flights)
+    const groupByDay = _(this.flights)
       .reduce((acc, flight) => {
         // Split the time into an array and extract the year, month and day from it by deconstruction
         const [outDepartureYear, outDepartureMonth, outDepartureDay] = flight.outdepartdate.split('-');
         /* If the year and the month matches with the departure
-           Default the outbound object key to {} if it does not exist then increment the day key by 1 defaulting to 0 if it does not exist */
+           Default the day key to {} if it does not exist then increment the outbound count by 1 defaulting to 0 if it does not exist */
         if (outDepartureYear === year && Number.parseInt(outDepartureMonth) === month) {
-          acc.outbound = _.set(acc.outbound || {}, outDepartureDay, _.get(acc.outbound, outDepartureDay, 0) + 1);
+          acc[outDepartureDay] = _.set(acc[outDepartureDay] || {}, 'outbound', _.get(acc[outDepartureDay], 'outbound', 0) + 1);
         }
         // If the journey has a return flight repeat the same procedure again but for inbound flights this time
         if (flight.oneway === '0') {
           const [inDepartureYear, inDepartureMonth, inDepartureDay] = flight.indepartdate.split('-');
           if (inDepartureYear === year && Number.parseInt(inDepartureMonth) === month) {
-            acc.inbound = _.set(acc.inbound || {}, inDepartureDay, _.get(acc.inbound, inDepartureDay, 0) + 1);
+            acc[inDepartureDay] = _.set(acc[inDepartureDay] || {}, 'inbound', _.get(acc[inDepartureDay], 'inbound', 0) + 1);
           }
         }
         return acc;
       }, {});
-    return countByDay;
+    return groupByDay;
   },
 };
 

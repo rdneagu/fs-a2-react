@@ -1,0 +1,15 @@
+@import '../scss/variables';
+
+.airport-data {
+  display: flex;
+  width: 300px;
+  flex-direction: column;
+  background-color: darken($bg-blue-2, 3%);
+  border-radius: 4px;
+  padding: 8px 20px;
+  font-weight: 500;
+
+  .airport {
+    margin-top: 10px;
+  }
+}

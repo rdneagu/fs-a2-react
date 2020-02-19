@@ -1,0 +1,30 @@
+@import '../scss/variables';
+
+.airplane-arrow {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  .line {
+    position: relative;
+    flex: 1;
+    height: 2px;
+    background-color: $border-blue;
+    border: none;
+    .line-text {
+      display: block;
+      font-size: 1.5em;
+      font-weight: 500;
+    }         
+  }
+  img { position: absolute; }
+  &.right img {
+    transform: rotate(45deg);
+    right: 5px;
+  }
+  &.left img {
+    transform: rotate(225deg);
+    left: 5px;
+  }
+}
