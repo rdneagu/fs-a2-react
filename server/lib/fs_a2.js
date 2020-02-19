@@ -90,13 +90,13 @@ const fs_a2 = {
       .map((flight) => {
         const outDepartureDateTime = new Date(`${flight.outdepartdate} ${flight.outdeparttime}`);
         const outArrivalDateTime = new Date(`${flight.outarrivaldate} ${flight.outarrivaltime}`);
-        
+
         const difference = [Math.round(Math.abs(outArrivalDateTime - outDepartureDateTime) / 1000)];
         if (flight.oneway === '0') {
           const inDepartureDateTime = new Date(`${flight.indepartdate} ${flight.indeparttime}`);
           const inArrivalDateTime = new Date(`${flight.inarrivaldate} ${flight.inarrivaltime}`);
 
-          difference.push(Math.round(Math.abs(inArrivalDateTime - inDepartureDateTime) / 1000))
+          difference.push(Math.round(Math.abs(inArrivalDateTime - inDepartureDateTime) / 1000));
         }
         return difference;
       })
