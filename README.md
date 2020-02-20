@@ -28,7 +28,7 @@ Read [here](https://github.com/rdneagu/fs-a2-react#4-issues) if you run into pro
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-**NOTE: that the application will display a continuous loading animation if the API web service is not running**
+**NOTE: The application will display a continuous loading animation if the API web service is not running**
 
 **`npm run api`**
 
