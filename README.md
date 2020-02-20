@@ -51,3 +51,6 @@ If you run Windows and the packages fail to build (node-expat and/or node-sass) 
 
 Linux systems should not have any problem if you followed [the instructions](https://github.com/rdneagu/fs-a2-react#1-prerequisites)
 
+### 5. Preview
+
+![Project Animation](https://media.giphy.com/media/dUefio9NY26Kw05Ecr/giphy.gif)
