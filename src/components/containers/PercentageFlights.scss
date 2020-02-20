@@ -1,3 +1,4 @@
+@import '../../scss/fx';
 @import '../../scss/variables';
 
 .percentage-flights {
@@ -7,7 +8,7 @@
   background: rgba($bg-blue-2, .8);
   font-weight: 500;
   background: $bg-blue-2 url('../../assets/runway.svg') repeat-x 445px center/cover;
-  animation: slideLeft 4.0s linear infinite forwards;
+  animation: slideBackgroundLeft 4.0s linear infinite forwards;
   .circle {
     align-self: center;
     display: flex;
@@ -38,5 +39,3 @@
   }
   .airplane-arrow { flex: 1; }
 }
-
-@keyframes slideLeft { from { background-position-x: 445px } to { background-position-x: -850px } }
