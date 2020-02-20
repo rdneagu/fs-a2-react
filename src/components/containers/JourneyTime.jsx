@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './JourneyTime.scss';
 
-import AirplaneArrow from '../AirplaneArrow';
-import AirportData from '../AirportData';
+import AirplaneArrow from '../AirplaneArrow.jsx';
+import AirportData from '../AirportData.jsx';
 
 /**
  * Computes the time in the {dd}d {hh}h {mm}m {ss}s format

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './MorningFlights.scss';
 
-import Separator from '../Separator';
-import MorningFlightPanel from '../panels/MorningFlightPanel';
+import Separator from '../Separator.jsx';
+import MorningFlightPanel from '../panels/MorningFlightPanel.jsx';
 
 class MorningFlights extends Component {
   render() {

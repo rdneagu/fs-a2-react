@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './PercentageFlights.scss';
 
-import AirplaneArrow from '../AirplaneArrow';
+import AirplaneArrow from '../AirplaneArrow.jsx';
 
 class PercentageFlights extends Component {
   render() {
