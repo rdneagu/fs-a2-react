@@ -3,14 +3,14 @@ import axios from 'axios';
 import './Home.scss';
 
 /* Components */
-import Loading from '../components/Loading.jsx';
-import Separator from '../components/Separator.jsx';
+import Loading from '../components/Loading';
+import Separator from '../components/Separator';
 /* Containers */
-import MorningFlights from '../components/containers/MorningFlights.jsx';
-import PercentageFlights from '../components/containers/PercentageFlights.jsx';
-import JourneyTime from '../components/containers/JourneyTime.jsx';
-import PopularDestinations from '../components/containers/PopularDestinations.jsx';
-import FlightsPerDay from '../components/containers/FlightsPerDay.jsx';
+import MorningFlights from '../components/containers/MorningFlights';
+import PercentageFlights from '../components/containers/PercentageFlights';
+import JourneyTime from '../components/containers/JourneyTime';
+import PopularDestinations from '../components/containers/PopularDestinations';
+import FlightsPerDay from '../components/containers/FlightsPerDay';
 
 class Home extends React.Component {
   constructor(props) {

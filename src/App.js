@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 
-import Home from './views/Home.jsx';
+import Home from './views/Home';
 
 function App() {
   return (
