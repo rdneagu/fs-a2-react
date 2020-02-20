@@ -8,12 +8,13 @@ class AirplaneArrow extends Component {
   render() {
     // Assign airplane direction defaulting to 'right' if undefined
     const direction = this.props.direction || 'right';
+    const size = this.props.size || 32;
     return (
       <div className={`airplane-arrow ${direction}`}>
         <div className="line">
           <span className="line-text">{this.props.children}</span>
         </div>
-        <img src={PlaneSvg} alt="plane" width="32"/>
+        <img src={PlaneSvg} alt="plane" width={size} />
       </div>
     );
   }
@@ -21,8 +22,9 @@ class AirplaneArrow extends Component {
 
 // Prop type validation
 AirplaneArrow.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.string,
   direction: PropTypes.string,
+  size: PropTypes.string,
 };
 
 export default AirplaneArrow;

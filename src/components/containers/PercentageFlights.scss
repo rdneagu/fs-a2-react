@@ -5,36 +5,38 @@
   padding: 10px 20px;
   color: $border-blue;
   background: rgba($bg-blue-2, .8);
-  border-radius: 4px;
-  border: 1px solid $border-blue;
   font-weight: 500;
+  background: $bg-blue-2 url('../../assets/runway.svg') repeat-x 445px center/cover;
+  animation: slideLeft 4.0s linear infinite forwards;
   .circle {
     align-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     width: 180px;
     height: 180px;
-    border-radius: 50%;
+    border-radius: 10px;
     border: 2px solid $border-blue;
-    background-color: $bg-blue-2;
-    .text {
-      color: lighten($border-blue, 10%);
-      font-size: 3em;
-    }
-    .info { font-size: 1.25em; }
-  }
-  .destination {
-    flex: 1;
-    display: flex;
-    .airplane-arrow { width: 150px; }
-    .country {
+    background-color: rgba($bg-blue-2, .8);
+    .section {
       display: flex;
-      align-items: center;
-      margin-left: 10px;
-      font-size: 1.25em;
-      font-weight: 500;
+      flex-direction: column;
+
+      .percentage {
+        color: lighten($border-blue, 10%);
+        font-size: 3em;
+      }
+      .info { font-size: 1.5em; }
+      .action { font-size: 1.1em; }
+      .destination {
+        color: lighten($border-blue, 10%);
+        font-size: 1.25em;
+        font-weight: 700;
+      }
     }
   }
+  .airplane-arrow { flex: 1; }
 }
+
+@keyframes slideLeft { from { background-position-x: 445px } to { background-position-x: -850px } }

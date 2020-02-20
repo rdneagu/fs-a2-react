@@ -5,7 +5,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  // overflow: hidden;
   .line {
     position: relative;
     flex: 1;
@@ -21,10 +21,10 @@
   img { position: absolute; }
   &.right img {
     transform: rotate(45deg);
-    right: 5px;
+    right: 1%;
   }
   &.left img {
     transform: rotate(225deg);
-    left: 5px;
+    left: 1%;
   }
 }

@@ -11,13 +11,16 @@ class PercentageFlights extends Component {
     return (
       <div className="container percentage-flights">
         <div className="circle">
-          <span className="text">{percentage.toFixed(2)}%</span>
-          <span className="info">OF FLIGHTS</span>
+          <div className="section top">
+            <span className="percentage">{percentage.toFixed(2)}%</span>
+            <span className="info">OF FLIGHTS</span>
+          </div>
+          <div className="section bottom">
+            <span className="action">DEPARTING TO</span>
+            <span className="destination">{this.props.country.toUpperCase()}</span>
+          </div>
         </div>
-        <div className="destination">
-          <AirplaneArrow></AirplaneArrow>
-          <div className="country">{this.props.country}</div>
-        </div>
+        <AirplaneArrow size="160"></AirplaneArrow>
       </div>
     );
   }
