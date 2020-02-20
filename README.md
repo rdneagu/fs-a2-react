@@ -15,7 +15,7 @@
 - Debian repository: **`sudo apt install nodejs build-essentials`**
 - AUR repository: **`sudo pacman -S nodejs base-devel`**
 
-### 2. Modules
+### 2. Installing
 
 After cloning the repository, run **`npm install`** while in the root directory of the project. npm will automatically attempt to download and install all the required dependencies
 
