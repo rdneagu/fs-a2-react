@@ -54,3 +54,4 @@ Linux systems should not have any problem if you followed [the instructions](htt
 ### 5. Preview
 
 ![Project Animation](https://media.giphy.com/media/dUefio9NY26Kw05Ecr/giphy.gif)
+![Project Animation](https://i.imgur.com/ikrgQqI.mp4)
