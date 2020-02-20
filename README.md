@@ -2,17 +2,20 @@
 
 ### 1. Prerequisites
 #### Windows
+- Python >=2.7 (comes with node.js)
+- Visual Studio 2017 Build Tools (comes with node.js)
 - [node.js >= 13.7.0](https://nodejs.org/en/)
-  - Make sure to check **`Automatically install the necessary tools`** since the xml2json package has a dependency that requires compiling
+  - Make sure to check **`Automatically install the necessary tools`** since node-sass and xml2json packages requires Visual Studio 2017 Build Tools and Python
 #### Linux
-- Debian repository: **`sudo apt install nodejs`**
-- AUR repository: **`sudo pacman -S nodejs`**
+- Python >=2.7
+- Debian repository: **`sudo apt install nodejs build-essentials`**
+- AUR repository: **`sudo pacman -S nodejs base-devel`**
 
 ### 2. Modules
 
 After cloning the repository, run **`npm install`** while in the root directory of the project. npm will automatically attempt to download and install all the required dependencies
 
-Try one of the fixes [here](https://github.com/rdneagu/fs-a2-react#4-issues) if you run into problems during this process though the problem arises only on older versions of node.js, fresh Linux distro system or Windows systems that did not install the necessary tools during the node.js installation process.
+Read [here](https://github.com/rdneagu/fs-a2-react#4-issues) if you run into problems during this process.
 
 ### 3. Starting Up
 
@@ -32,7 +35,7 @@ Runs the web service on port :5000 which contains the API endpoints and the serv
 
 ### 4. Issues
 
-If you run Windows and the node-expat dependency, used by the [xml2json](https://www.npmjs.com/package/xml2json) package, failes to build, there are some fixes documented [here](https://github.com/astro/node-expat/blob/master/README.md#windows)
+If you run Windows and the packages fail to build (node-expat and/or node-sass) try to re-install node.js and make sure the necessary tools are installed without errors (Python and Visual Studio 2017 Build Tools). There are also some fixes documented [here](https://github.com/astro/node-expat/blob/master/README.md#windows) given the problem still persists.
 
-Alternatively, if you run Ubuntu (possibly all the Debian distros) and the node-expat dependency fails to build, try to install **`sudo apt install build-essential`** and then run the **`npm install`** command again
+Linux systems should not have any problem if you followed [the instructions](https://github.com/rdneagu/fs-a2-react#1-prerequisites)
 
