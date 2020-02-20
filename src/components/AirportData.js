@@ -14,6 +14,7 @@ class AirportData extends Component {
   }
 }
 
+// Prop type validation
 AirportData.propTypes = {
   data: PropTypes.object.isRequired,
 };

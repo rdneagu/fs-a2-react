@@ -1,0 +1,35 @@
+@import '../../scss/variables';
+
+.morning-flights .panels aside {
+  position: relative;
+  display: flex;
+  padding: 10px;
+  border-radius: 4px;
+  align-items: center;
+  &.inbound img { transform: scaleY(-1) rotate(-90deg); }
+  .amount {
+    font-size: 6em;
+    opacity: .2;
+  }
+  .text {
+    flex: 1;
+    text-align: center;
+    font-size: 1.5em;
+  }
+  .icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .direction {
+      order: 2;
+      margin-top: 4px;
+      font-weight: bold;
+      color: $border-blue;
+    }
+    img {
+      order: 1;
+      opacity: .2;      
+    }
+  }
+}

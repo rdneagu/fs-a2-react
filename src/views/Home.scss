@@ -1,53 +1,29 @@
+@import '../scss/fx';
 @import '../scss/variables';
 
 .home {
-  .split-container-wrapper {
+  .container-wrapper {
     display: flex;
-    height: 400px;
-    margin-top: 50px;
-
-    .container-wrapper {
+    justify-content: center;
+    animation: fadeIn 0.4s linear forwards;
+    &.middle {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-column-gap: 20px;
+      margin: 50px 4%;
+    }
+    &.footer { background-color: rgba($bg-blue-2, .8); }
+    .container {
       flex: 1;
       display: flex;
-      background-color: $bg-blue-2;
-      padding: 20px;
-    }
-
-    .percentage-wrapper {
-      display: flex;
-      padding: 40px;
-      color: $border-blue;
-      .percentage-circle {
-        align-self: stretch;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        border: 2px solid $border-blue;
-        .percentage-text {
-          color: lighten($border-blue, 10%);
-          font-size: 5em;
-        }
-        .percentage-info {
-          font-size: 1.25em;
-          font-weight: 500;
-        }
+      flex-direction: column;
+      .title {
+        display: block;
+        padding: 4px;
+        background-color: rgba(lighten($col-cyan, 10%), .2);
+        font-weight: bold;
       }
-      .destination {
-        flex: 1;
-        display: flex;
-        
-        .country {
-          display: flex;
-          align-items: center;
-          margin-left: 10px;
-          font-size: 1.25em;
-          font-weight: 500;
-        }
-      }
+      .chart { flex: 1; }
     }
   }
 }

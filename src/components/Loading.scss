@@ -1,0 +1,21 @@
+@import '../scss/fx';
+@import '../scss/variables';
+
+.loading-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s linear forwards;
+  .loading {
+    display: flex;
+    align-items: center;
+    font-size: 10em;
+    .icon {
+      margin: 0 50px;
+      animation: rotate 1.5s linear infinite forwards;
+    }
+    .status { font-weight: 700; }
+  }
+}

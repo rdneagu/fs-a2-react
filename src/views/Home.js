@@ -1,90 +1,118 @@
 import React from 'react';
 import axios from 'axios';
-
 import './Home.scss';
 
+/* Components */
+import Loading from '../components/Loading';
 import Separator from '../components/Separator';
-
-import MorningFlights from '../components/MorningFlights';
-import JourneyTime from '../components/JourneyTime';
-import PopularDestinations from '../components/PopularDestinations';
-import FlightsPerDay from '../components/FlightsPerDay';
+/* Containers */
+import MorningFlights from '../components/containers/MorningFlights';
+import PercentageFlights from '../components/containers/PercentageFlights';
+import JourneyTime from '../components/containers/JourneyTime';
+import PopularDestinations from '../components/containers/PopularDestinations';
+import FlightsPerDay from '../components/containers/FlightsPerDay';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // Data variables to store the API response
       morningFlights: undefined,
+      percentageSweden: undefined,
+      popularDestinations: undefined,
+      averageJourney: undefined,
+      flightsPerDay: undefined,
+      /* Query parameters that are sent to the server to retrieve the data
+       * Feel free to play with them except the last one since the data recorded in the XML file is only for January 2018 */
+      query: {
+        percentageFlights: {
+          country: 'Sweden',
+        },
+        popularDestinations: {
+          limit: 10,
+        },
+        averageJourney: {
+          departure: 'LHR',
+          destination: 'DXB',
+        },
+        flightsPerDay: {
+          year: 2018,
+          month: 'January',
+        },
+      },
+      // Default the loading screen to true until the data is loaded
       loading: true,
     };
   }
 
   async componentDidMount() {
+    // async calls to get the data from the server
     const morningFlights = await axios.get('http://localhost:5000/api/getMorningFlights');
-    const percentageSweden = await axios.get('http://localhost:5000/api/getPercentageOfFlights?country=Sweden');
-    const popularDestinations = await axios.get('http://localhost:5000/api/getMostPopularDestinations?limit=10');
-    const averageJourney = await axios.get('http://localhost:5000/api/getAvgJourneyTime?departure=LHR&destination=DXB');
-    const flightsPerDay = await axios.get('http://localhost:5000/api/getNumberOfFlightsPerDay?year=2018&month=January');
+
+    const { country } = this.state.query.percentageFlights;
+    const percentageFlights = await axios.get(`http://localhost:5000/api/getPercentageOfFlights?country=${country}`);
+
+    const { limit } = this.state.query.popularDestinations;
+    const popularDestinations = await axios.get(`http://localhost:5000/api/getMostPopularDestinations?limit=${limit}`);
+
+    const { departure, destination } = this.state.query.averageJourney;
+    const averageJourney = await axios.get(`http://localhost:5000/api/getAvgJourneyTime?departure=${departure}&destination=${destination}`);
+
+    const { year, month } = this.state.query.flightsPerDay;
+    const flightsPerDay = await axios.get(`http://localhost:5000/api/getNumberOfFlightsPerDay?year=${year}&month=${month}`);
+
+    // Update the data variables after with the retrieved data and remove the loading screen
     this.setState({
       morningFlights: morningFlights.data,
-      percentageSweden: percentageSweden.data,
+      percentageFlights: percentageFlights.data,
       popularDestinations: popularDestinations.data,
       averageJourney: averageJourney.data,
       flightsPerDay: flightsPerDay.data,
       loading: false,
     });
-
-    console.log(this.state);
   }
 
   render() {
     const isLoading = this.state.loading;
-    let morningFlights;
-    let journeyTime;
-    let splitContainer;
+    // Container variables to store DOM elements for conditional rendering
+    let headerContainer;
+    let middleContainer;
+    let footerContainer;
+    let loading;
 
+    // If the data has finished loading then let React display the containers
+    // Else just display the loading screen
     if (!isLoading) {
-      morningFlights = (
-        <div className="morning-flights-wrapper">
-          <span className="title">MORNING FLIGHTS (06:00 AM TO 12:00 AM)</span>
-          <div className="panels">
-            <MorningFlights amount={this.state.morningFlights.outbound} direction="outbound" text="Flights departing to their destination"></MorningFlights>
-            <Separator></Separator>
-            <MorningFlights amount={this.state.morningFlights.inbound} direction="inbound" text="Flights returning from their destination"></MorningFlights>
-          </div>
+      headerContainer = (
+        <div className="container-wrapper header">
+          <MorningFlights data={this.state.morningFlights}></MorningFlights>
         </div>
       );
-      journeyTime = (
-        <div className="average-journey-time-wrapper">
+      middleContainer = (
+        <div className="container-wrapper middle">
+          <PercentageFlights country={this.state.query.percentageFlights.country} data={this.state.percentageFlights}></PercentageFlights>
           <JourneyTime data={this.state.averageJourney}></JourneyTime>
         </div>
       );
-      splitContainer = (
-        <div className="split-container-wrapper">
-          <div className="container-wrapper">
-            <PopularDestinations data={this.state.popularDestinations}></PopularDestinations>
-          </div>
-          <div className="container-wrapper">
-            <FlightsPerDay data={this.state.flightsPerDay}></FlightsPerDay>
-          </div>
+      footerContainer = (
+        <div className="container-wrapper footer">
+          <PopularDestinations data={this.state.popularDestinations}></PopularDestinations>
+          <Separator></Separator>
+          <FlightsPerDay data={this.state.flightsPerDay} year={this.state.query.flightsPerDay.year} month={this.state.query.flightsPerDay.month}></FlightsPerDay>
         </div>
       );
+    } else {
+      loading = (<Loading></Loading>);
     }
     return (
       <div className="page home">
-        {morningFlights}
-        {journeyTime}
-        {splitContainer}
+        {loading}
+        {headerContainer}
+        {middleContainer}
+        {footerContainer}
       </div>
     );
   }
 }
-
-/* <div className="percentage-wrapper">
-            <div className="percentage-circle">
-              <span className="percentage-text">50%</span>
-              <span className="percentage-info">OF FLIGHTS</span>
-            </div>
-          </div> */
 
 export default Home;

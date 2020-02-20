@@ -6,6 +6,7 @@ import PlaneSvg from '../assets/airplane.svg';
 
 class AirplaneArrow extends Component {
   render() {
+    // Assign airplane direction defaulting to 'right' if undefined
     const direction = this.props.direction || 'right';
     return (
       <div className={`airplane-arrow ${direction}`}>
@@ -18,6 +19,7 @@ class AirplaneArrow extends Component {
   }
 }
 
+// Prop type validation
 AirplaneArrow.propTypes = {
   children: PropTypes.string.isRequired,
   direction: PropTypes.string,
