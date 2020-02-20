@@ -43,7 +43,7 @@ Runs the web service on port :5000 which contains the API endpoints and the serv
   - **`destination` param** - specify the destination point as IATA code
   
   This one was a bit tricky due to the timezone differences since I did not know if I should take them into consideration. I ended up taking them and the journey times are more or less similar with google flights
-- /api/getNumberOfFlightsPerDay (gets the number of flights per day in a specific month and year)
+- **/api/getNumberOfFlightsPerDay** (gets the number of flights per day in a specific month and year)
   - **`year` param**  - specify which year to look up into
   - **`month` param** - specify which month to look up into
   
