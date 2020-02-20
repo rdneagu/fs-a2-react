@@ -28,7 +28,7 @@ Read [here](https://github.com/rdneagu/fs-a2-react#4-issues) if you run into pro
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-**NOTE: that the application will display a continuous loading animation if the web service is not started as indicated below**
+**NOTE: that the application will display a continuous loading animation if the API web service is not running**
 
 **`npm run api`**
 
@@ -42,7 +42,7 @@ Runs the web service on port :5000 which contains the API endpoints and the serv
   - **`departure` param**   - specify the departure point as IATA code
   - **`destination` param** - specify the destination point as IATA code
   
-  This one was a bit tricky due to the timezone differences since I did not know if I should take them into consideration. I ended up taking them and the journey times are more or less similar with google flights
+  This one was a bit tricky due to the timezone discrepancies since I did not know if I should take them into consideration. I ended up taking them and the journey times are more or less similar with google flights
 - **/api/getNumberOfFlightsPerDay** (gets the number of flights per day in a specific month and year)
   - **`year` param**  - specify which year to look up into
   - **`month` param** - specify which month to look up into
@@ -57,7 +57,7 @@ Runs the web service on port :5000 which contains the API endpoints and the serv
   - [amCharts4](https://www.amcharts.com/docs/v4/) (for the interactive charts)
 - Back-end
   - [node.js](https://nodejs.org/en/)
-  - [xml2json](https://www.npmjs.com/package/xml2json) (used to convert the XML data file to JSON file on start up)
+  - [xml2json](https://www.npmjs.com/package/xml2json) (used to convert the XML data file to JSON data on server start up)
 - Both ends
   - [lodash](https://lodash.com/)
 
