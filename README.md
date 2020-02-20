@@ -6,12 +6,12 @@
 
 ### 1. Prerequisites
 #### Windows
-- Python >=2.7 (comes with node.js)
+- Python >= 2.7 (comes with node.js)
 - Visual Studio 2017 Build Tools (comes with node.js)
 - [node.js >= 13.7.0](https://nodejs.org/en/)
   - Make sure to check **`Automatically install the necessary tools`** since node-sass and xml2json packages requires Visual Studio 2017 Build Tools and Python
 #### Linux
-- Python >=2.7
+- Python >= 2.7
 - Debian repository: **`sudo apt install nodejs build-essentials`**
 - AUR repository: **`sudo pacman -S nodejs base-devel`**
 
@@ -49,7 +49,19 @@ Runs the web service on port :5000 which contains the API endpoints and the serv
   
   Due to the nature of data having only information about the flights in January 2018, the API can only support January 2018
 
-### 4. Issues
+### 4. Tools Used
+
+- Front-End
+  - [React](https://reactjs.org/)
+  - [axios](https://github.com/axios/axios) (to make HTTP requests)
+  - [amCharts4](https://www.amcharts.com/docs/v4/) (for the interactive charts)
+- Back-end
+  - [node.js](https://nodejs.org/en/)
+  - [xml2json](https://www.npmjs.com/package/xml2json) (used to convert the XML data file to JSON file on start up)
+- Both ends
+  - [lodash](https://lodash.com/)
+
+### 5. Issues
 
 If you run Windows and the packages fail to build (node-expat and/or node-sass) try to re-install node.js and make sure the necessary tools are installed without errors (Python and Visual Studio 2017 Build Tools). There are also some fixes documented [here](https://github.com/astro/node-expat/blob/master/README.md#windows) given the problem still persists.
 
