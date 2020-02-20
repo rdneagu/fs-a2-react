@@ -12,7 +12,7 @@
 
 After cloning the repository, run **`npm install`** while in the root directory of the project. npm will automatically attempt to download and install all the required dependencies
 
-Try one of the fixes [here](https://github.com/rdneagu/fs-a2-react#4-issues) if you run into problems during this process though the problem arises only on older versions of node (**`npm update -g node-gyp`**), fresh Linux distros or systems that did not install the necessary tools during the node.js installation process.
+Try one of the fixes [here](https://github.com/rdneagu/fs-a2-react#4-issues) if you run into problems during this process though the problem arises only on older versions of node-gyp (**`npm update -g node-gyp`** but the most recent version should be already installed if you did a fresh node.js installation), fresh Linux distros or Windows systems that did not install the necessary tools during the node.js installation process.
 
 ### 3. Starting Up
 
