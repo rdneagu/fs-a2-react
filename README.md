@@ -65,4 +65,4 @@ Runs the web service on port :5000 which contains the API endpoints and the serv
 
 If you run Windows and the packages fail to build (node-expat and/or node-sass) try to re-install node.js and make sure the necessary tools are installed without errors (Python and Visual Studio 2017 Build Tools). There are also some fixes documented [here](https://github.com/astro/node-expat/blob/master/README.md#windows) given the problem still persists.
 
-Linux systems should not have any problem if you followed [the instructions](https://github.com/rdneagu/fs-a2-react#1-prerequisites)
+Linux systems should not have any problems if you followed [the instructions](https://github.com/rdneagu/fs-a2-react#1-prerequisites)
