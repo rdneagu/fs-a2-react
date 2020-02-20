@@ -33,12 +33,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 **`npm run api`**
 
 Runs the web service on port :5000 which contains the API endpoints and the server logic
-- /api/getMorningFlights (gets all the morning flights betweeen 6 and 12 AM)
-- /api/getPercentageOfFlights (gets the percentage of the flights going into a specific country)
+- **/api/getMorningFlights** (gets all the morning flights betweeen 6 and 12 AM)
+- **/api/getPercentageOfFlights** (gets the percentage of the flights going into a specific country)
   - **`country` param** - specify which country to look up for
-- /api/getMostPopularDestinations (gets the most popular destinations up to n elements)
+- **/api/getMostPopularDestinations** (gets the most popular destinations up to n elements)
   - **`limit` param** - specify how many destinations to fit in the response (defaults to 10)
-- /api/getAvgJourneyTime (gets the average journey time for both in and out flights from a departure point to a destination point)
+- **/api/getAvgJourneyTime** (gets the average journey time for both in and out flights from a departure point to a destination point)
   - **`departure` param**   - specify the departure point as IATA code
   - **`destination` param** - specify the destination point as IATA code
   
