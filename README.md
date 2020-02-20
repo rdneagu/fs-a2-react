@@ -9,7 +9,7 @@
 - Python >= 2.7 (comes with node.js)
 - Visual Studio 2017 Build Tools (comes with node.js)
 - [node.js >= 13.7.0](https://nodejs.org/en/)
-  - Make sure to check **`Automatically install the necessary tools`** since node-sass and xml2json packages requires Visual Studio 2017 Build Tools and Python
+  - Make sure to check **`Automatically install the necessary tools`** since node-sass and xml2json packages require Visual Studio 2017 Build Tools and Python
 #### Linux
 - Python >= 2.7
 - Debian repository: **`sudo apt install nodejs build-essentials`**
@@ -42,7 +42,7 @@ Runs the web service on port :5000 which contains the API endpoints and the serv
   - **`departure` param**   - specify the departure point as IATA code
   - **`destination` param** - specify the destination point as IATA code
   
-  This one was a bit tricky due to the timezone discrepancies since I did not know if I should take them into consideration. I ended up taking them and the journey times are more or less similar with Google flights
+  This one was a bit tricky due to the timezone discrepancies since I did not know if I should take them into consideration. I ended up taking them and the journey times are more or less similar to Google flights
 - **/api/getNumberOfFlightsPerDay** (gets the number of flights per day in a specific month and year)
   - **`year` param**  - specify which year to look up into
   - **`month` param** - specify which month to look up into
