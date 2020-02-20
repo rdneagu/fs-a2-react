@@ -24,14 +24,26 @@ Read [here](https://github.com/rdneagu/fs-a2-react#4-issues) if you run into pro
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+**NOTE: that the application will display a continuous loading animation if the web service is not started as indicated below**
+
 **`npm run api`**
 
 Runs the web service on port :5000 which contains the API endpoints and the server logic
-- /api/getMorningFlights
-- /api/getPercentageOfFlights
-- /api/getMostPopularDestinations
-- /api/getAvgJourneyTime
-- /api/getNumberOfFlightsPerDay
+- /api/getMorningFlights (gets all the morning flights betweeen 6 and 12 AM)
+- /api/getPercentageOfFlights (gets the percentage of the flights going into a specific country)
+  - **`country` param** - specify which country to look up for
+- /api/getMostPopularDestinations (gets the most popular destinations up to n elements)
+  - **`limit` param** - specify how many destinations to fit in the response (defaults to 10)
+- /api/getAvgJourneyTime (gets the average journey time for both in and out flights from a departure point to a destination point)
+  - **`departure` param**   - specify the departure point as IATA code
+  - **`destination` param** - specify the destination point as IATA code
+  
+  This one was a bit tricky due to the timezone differences since I did not know if I should take them into consideration. I ended up taking them and the journey times are more or less similar with google flights
+- /api/getNumberOfFlightsPerDay (gets the number of flights per day in a specific month and year)
+  - **`year` param**  - specify which year to look up into
+  - **`month` param** - specify which month to look up into
+  
+  Due to the nature of data having only information about the flights in January 2018, the API can only support January 2018
 
 ### 4. Issues
 
