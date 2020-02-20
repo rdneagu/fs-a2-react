@@ -5,7 +5,7 @@
 - Python >=2.7 (comes with node.js)
 - Visual Studio 2017 Build Tools (comes with node.js)
 - [node.js >= 13.7.0](https://nodejs.org/en/)
-  - Make sure to check **`Automatically install the necessary tools`** since the xml2json package has a dependency that requires Visual Studio 2017 Build Tools
+  - Make sure to check **`Automatically install the necessary tools`** since node-sass and xml2json packages requires Visual Studio 2017 Build Tools and Python
 #### Linux
 - Python >=2.7
 - Debian repository: **`sudo apt install nodejs build-essentials`**
@@ -35,7 +35,7 @@ Runs the web service on port :5000 which contains the API endpoints and the serv
 
 ### 4. Issues
 
-If you run Windows and the packages fail to build (node-expat and/or node-sass) try to re-install node.js and make sure the necessary tools are installed without errors (python and Visual Studio 2017 Build Tools). There are also some fixes documented [here](https://github.com/astro/node-expat/blob/master/README.md#windows) given the problem still persists.
+If you run Windows and the packages fail to build (node-expat and/or node-sass) try to re-install node.js and make sure the necessary tools are installed without errors (Python and Visual Studio 2017 Build Tools). There are also some fixes documented [here](https://github.com/astro/node-expat/blob/master/README.md#windows) given the problem still persists.
 
 Linux systems should not have any problem if you followed [the instructions](https://github.com/rdneagu/fs-a2-react#1-prerequisites)
 
